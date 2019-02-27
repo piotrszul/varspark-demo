@@ -1,0 +1,12 @@
+{
+ "display_name": "JuSpark",
+ "language": "python",
+ "argv": [
+  "python",
+  "-m",
+  "ipykernel",
+  "-f",
+  "{connection_file}",
+  "--ext=juspark"
+ ]
+}
