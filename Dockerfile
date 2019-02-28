@@ -4,7 +4,6 @@ MAINTAINER Piotr Szul
 
 USER root
 
-
 #
 # Install Apache Spark
 #
@@ -24,6 +23,15 @@ RUN apt-get -y update && apt-get install -y python-pip && apt-get clean
 
 RUN pip install --upgrade matplotlib pandas click variant-spark jupyter==1.0.0 decorator==4.2.1 notebook==5.7.0 juspark 
 
+
+#
+# Install hail
+#
+
+RUN mkdir /opt/hail
+COPY libs/hail* /opt/hail/
+ENV PYTHONPATH="$PYTHONPATH:/opt/hail/hail-python.zip"
+
 #
 # Create the user
 #
@@ -35,14 +43,10 @@ WORKDIR /home/varspark
 
 #
 # Install miniconda
+# TODO: Perhaps to be used in the future, for now just use system python setup
 #
 #RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh 
 #RUN sh Miniconda2-latest-Linux-x86_64.sh -b
-
-
-#
-# Setup python env
-#
 #ENV PATH=$PATH:/home/varspark/miniconda2/bin
 #RUN  conda create -y -n jupyter python=2.7
 #RUN source activate jupyter
@@ -56,6 +60,19 @@ RUN mkdir -p .jupyter/
 COPY conf/jupyter_notebook_config.py .jupyter/
 RUN mkdir -p .local/share/jupyter/kernels/juspark/
 COPY conf/juspark_kernel.json .local/share/jupyter/kernels/juspark/kernel.json
+
+#
+# Create hail profile for juspark
+#
+
+RUN mkdir -p .juspark/profiles/
+COPY conf/juspark_hail .juspark/profiles/hail
+
+#
+# Copy the demo files
+#
+
+COPY demo/ .
 
 
 #SparkUI
