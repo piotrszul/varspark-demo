@@ -82,4 +82,10 @@ EXPOSE 4040
 EXPOSE 8888
 
 
+CMD jupyter notebook
+
+
+
+
+
 
