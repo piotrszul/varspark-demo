@@ -21,7 +21,7 @@ ENV PATH="$PATH:$SPARK_HOME/bin"
 
 RUN apt-get -y update && apt-get install -y python-pip && apt-get clean
 
-RUN pip install --upgrade matplotlib pandas click variant-spark jupyter==1.0.0 decorator==4.2.1 notebook==5.7.0 juspark 
+RUN pip install --upgrade matplotlib pandas click variant-spark==0.2.0 jupyter==1.0.0 decorator==4.2.1 notebook==5.7.0 juspark 
 
 
 #

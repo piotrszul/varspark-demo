@@ -1,5 +1,5 @@
 {
-    "spark.jars":"/usr/local/lib/python2.7/dist-packages/varspark/jars/variant-spark_2.11-0.2.0-a1-all.jar",
+    "spark.jars":"/usr/local/lib/python2.7/dist-packages/varspark/jars/variant-spark_2.11-0.2.0-all.jar",
     "spark.serializer":"org.apache.spark.serializer.KryoSerializer",
     "spark.sql.files.maxPartitionBytes":"1099511627776",
     "spark.sql.files.openCostInBytes":"1099511627776",
